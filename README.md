@@ -26,14 +26,13 @@ yarn run lint
 ```
 
 # Mockup
+## 首页
+![mockup](./mockup/201563974717_.pic_hd.jpg)
 ## 包裹入库
-![mockup](./mockup/121563938492_.pic_hd.jpg)
-## 欢迎页面
-![mockup](./mockup/131563938499_.pic_hd.jpg)
-## 列表页面
-![mockup](./mockup/101563938474_.pic_hd.jpg)
-## 包裹详情-预约取件
-![mockup](./mockup/141563938502_.pic_hd.jpg)
+![mockup](./mockup/181563974715_.pic_hd.png)
+## 预约取件
+![mockup](./mockup/211563976094_.pic_hd.jpg)
+
 
 
 
