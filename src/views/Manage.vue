@@ -4,10 +4,10 @@
       <a-layout-header>
         <span id="titile"></span>
         <div>
-          <a-button type="default">ALL</a-button>
-          <a-button type="default" >已预约</a-button>
-          <a-button type="default" >已取件</a-button>
-          <a-button type="default" >未预约</a-button>
+         <a-button type="default" @click="changeList('ALL')">ALL</a-button>
+          <a-button type="default"  @click="changeList('已预约')" >已预约</a-button>
+          <a-button type="default"  @click="changeList('已取件')">已取件</a-button>
+          <a-button type="default"  @click="changeList('未预约')">未预约</a-button>
           <a-button size="large" type="primary">+add</a-button>
         </div>
       </a-layout-header>
@@ -15,7 +15,7 @@
         <a-table
           :rowKey="record => record.orderNumber"
           bordered
-          :dataSource="getItems"
+          :dataSource="chooseStatusItems"
           :columns="columns"
         >
           <template slot="action" slot-scope="text, record">
@@ -70,7 +70,6 @@ export default {
       self.items = res.data;
       self.$store.dispatch("initItems", self.items);
     });
-    this.$router.push({ path: `/Manage` });
   },
   data: function() {
     return {
@@ -78,9 +77,9 @@ export default {
     };
   },
   computed: {
-    getItems() {
-      return this.$store.getters.getItems;
-    }
+    chooseStatusItems() {
+      return this.$store.getters.chooseStatusItems;
+    },
   },
   methods: {
     changeStatus(orderNumber) {
@@ -95,6 +94,9 @@ export default {
          orderNumber:orderNumber,
          status:"已取件"
        });
+    },
+     changeList(val){
+       this.$store.dispatch("setListFilter",val)
     }
   }
 };
