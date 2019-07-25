@@ -1,18 +1,37 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <a-button type="primary" @click="manage">Manage</a-button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import axios from "axios";
 export default {
   name: 'home',
-  components: {
-    HelloWorld
+  data() {
+    return {
+     items:Array
+    };
+  },
+  methods:{
+    manage(){
+      const self=this
+  axios
+      .get("http://localhost:8088/station")
+      .then(function(res){
+        self.items=res.data
+         self.$store.dispatch('initItems',self.items)
+      });
+  // console.log( self.items)
+       this.$router.push({ path: `/Manage` });
+      
+    }
   }
 }
 </script>
+<style>
+body{
+  text-align: center
+}
+</style>
+
