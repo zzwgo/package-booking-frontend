@@ -1,6 +1,8 @@
 <template>
   <div class="home">
     <router-link to="/Manage">Manage</router-link>
+    |
+    <router-link to="/Customer">Customer</router-link>
   </div>
 </template>
 
