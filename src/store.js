@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import axios from "axios";
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -38,11 +38,6 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    initItems({
-      commit
-    }, payload) {
-      commit('initItems', payload)
-    },
     setItemsStatus({
       commit
     }, payload) {
@@ -52,6 +47,13 @@ export default new Vuex.Store({
       commit
     }, payload) {
       commit('setListFilter', payload)
+    },
+    getItemsFromBack({commit}){
+      const self = this;
+      axios.get("http://localhost:8088/station").then(function(res) {
+        commit("initItems", res.data);
+      });
+
     }
   }
 })
